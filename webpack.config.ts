@@ -7,7 +7,7 @@ import CopyPlugin from 'copy-webpack-plugin';
 const config: Configuration = {
     entry: {
         main: './src/index.ts',
-        account: './src/account-theme-fix.ts'
+        account: './src/css/account.css'
     },
     devtool: false,
     output: {
@@ -81,6 +81,14 @@ const config: Configuration = {
                 {
                     from: path.resolve(__dirname, 'assets-img'),
                     to: path.resolve(__dirname, 'data/account/resources/img/')
+                },
+                {
+                    from: path.resolve(__dirname, 'src/img/adorsys-long.svg'),
+                    to: path.resolve(__dirname, 'data/account/resources/logo.svg')
+                },
+                {
+                    from: path.resolve(__dirname, 'src/img/adorsys.svg'),
+                    to: path.resolve(__dirname, 'data/account/resources/favicon.svg')
                 },
                 {
                     from: path.resolve(__dirname, 'data/common/resources/css/account.css'),
