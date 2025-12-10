@@ -6,7 +6,8 @@ import CopyPlugin from 'copy-webpack-plugin';
 
 const config: Configuration = {
     entry: {
-        main: './src/index.ts'
+        main: './src/index.ts',
+        account: './src/css/account.css'
     },
     devtool: false,
     output: {
@@ -16,6 +17,7 @@ const config: Configuration = {
         },
         path: path.resolve(__dirname, 'data/common/resources'),
         chunkFilename: 'js/chunks/[name]-[hash].js',
+        assetModuleFilename: 'assets/[hash][ext][query]'
     },
     mode: 'production',
     resolve: {
@@ -75,6 +77,14 @@ const config: Configuration = {
                 {
                     from: path.resolve(__dirname, 'assets-img'),
                     to: path.resolve(__dirname, 'data/common/resources/img/')
+                },
+                {
+                    from: path.resolve(__dirname, 'assets-img'),
+                    to: path.resolve(__dirname, 'data/account/resources/img/')
+                },
+                {
+                    from: path.resolve(__dirname, 'data/common/resources/css/account.css'),
+                    to: path.resolve(__dirname, 'data/account/resources/css/main.css')
                 },
             ],
         }),

@@ -17,5 +17,7 @@ services:
       - ${KC_PORT}:8080
     volumes:
       - ./.docker/keycloak-config/:/opt/keycloak/data/import/:ro
-      - ./data:/opt/keycloak/themes/adorsys-tm-01:ro
+      - ./data/login:/opt/keycloak/themes/adorsys-tm-01/login:ro
+      - ./data/account:/opt/keycloak/themes/adorsys-tm-01/account:ro
+      - ./data/common:/opt/keycloak/themes/adorsys-tm-01/common:ro
       #- ./build/:/opt/keycloak/providers/

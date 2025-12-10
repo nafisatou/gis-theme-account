@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+    themes: light --default;
+}
+
+theme {
+    --color-primary: #2F2CF9;
+    --color-secondary: #8498F4;
+    --color-accent: #8498F4;
+    --color-neutral: #101C25;
+    --color-base-100: #F8F9F9;
+
+    --color-info: #8498F4;
+    --color-success: #90D033;
+    --color-warning: #FFCB1D;
+    --color-error: #E16A6A;
+
+    /* Custom colors from original theme */
+    --color-dark-80: #28333B;
+    --color-dark-50: #878D92;
+    --color-dark-20: #F8F9F9;
+}
+
+/* Account page background - white */
+html,
+body {
+    @apply bg-base-100;
+}
+
+/* All PatternFly containers - white background */
+.pf-c-page,
+.pf-c-page__main,
+.pf-c-page__main-section,
+.pf-c-page__sidebar,
+.pf-c-nav,
+.pf-c-nav__list,
+.pf-c-nav__item,
+.pf-c-nav__link,
+.pf-c-drawer,
+.pf-c-drawer__content,
+.pf-c-drawer__panel,
+.pf-c-card,
+.pf-c-card__body,
+.pf-c-form,
+.pf-c-form__section,
+.pf-c-form__group,
+main,
+[role="main"] {
+    @apply bg-base-100;
+}
+
+/* Text color - black */
+p,
+label,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+li,
+td,
+th {
+    @apply text-black;
+}
+
+/* Button colors - blue */
+button,
+input[type="submit"],
+.btn,
+.pf-c-button {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+}
+
+button:disabled,
+input[type="submit"]:disabled,
+.btn:disabled {
+    @apply bg-gray-400 cursor-not-allowed;
+}
+
+/* Logo sizing */
+#kc-header-wrapper img {
+    width: 180px;
+    height: auto;
+}
