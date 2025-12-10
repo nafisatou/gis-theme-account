@@ -1,88 +1,92 @@
+/* ======================================= */
+/* Tailwind + DaisyUI */
 @import "tailwindcss";
 
 @plugin "daisyui" {
-    themes: light --default;
+  themes: light --default;
 }
 
-theme {
-    --color-primary: #2F2CF9;
-    --color-secondary: #8498F4;
-    --color-accent: #8498F4;
-    --color-neutral: #101C25;
-    --color-base-100: #F8F9F9;
+/* ======================================= */
+/* Custom Theme Colors / PatternFly light overrides */
+:root {
+  --color-primary: #2F2CF9;
+  --color-secondary: #8498F4;
+  --color-accent: #8498F4;
+  --color-neutral: #101C25;
+  --color-base-100: #F8F9F9;
 
-    --color-info: #8498F4;
-    --color-success: #90D033;
-    --color-warning: #FFCB1D;
-    --color-error: #E16A6A;
+  --color-info: #8498F4;
+  --color-success: #90D033;
+  --color-warning: #FFCB1D;
+  --color-error: #E16A6A;
 
-    /* Custom colors from original theme */
-    --color-dark-80: #28333B;
-    --color-dark-50: #878D92;
-    --color-dark-20: #F8F9F9;
+  /* PatternFly CSS variables */
+  --pf-global--BackgroundColor--100: #ffffff;
+  --pf-global--BackgroundColor--200: #ffffff;
+  --pf-global--BackgroundColor--300: #ffffff;
+  --pf-global--BackgroundColor--light-100: #ffffff;
+  --pf-global--BackgroundColor--light-200: #ffffff;
 }
 
-/* Account page background - white */
-html,
-body {
-    @apply bg-base-100;
+/* ======================================= */
+/* Body & Root Containers */
+html, body, #root, #app, #keycloak-content, #keycloak-section {
+  @apply !bg-base-100;
+  background-color: #ffffff; /* fallback */
 }
 
-/* All PatternFly containers - white background */
-.pf-c-page,
-.pf-c-page__main,
-.pf-c-page__main-section,
-.pf-c-page__sidebar,
-.pf-c-nav,
-.pf-c-nav__list,
-.pf-c-nav__item,
-.pf-c-nav__link,
-.pf-c-drawer,
-.pf-c-drawer__content,
-.pf-c-drawer__panel,
-.pf-c-card,
-.pf-c-card__body,
-.pf-c-form,
-.pf-c-form__section,
-.pf-c-form__group,
-main,
-[role="main"] {
-    @apply bg-base-100;
+/* PatternFly v5 page containers */
+.pf-v5-c-page,
+.pf-v5-c-page__main,
+.pf-v5-c-page__main-section,
+.pf-v5-c-card,
+.pf-v5-c-card__body {
+  background-color: #ffffff !important;
 }
 
-/* Text color - black */
-p,
-label,
-span,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a,
-li,
-td,
-th {
-    @apply text-black;
+/* ======================================= */
+/* Text Colors */
+p, label, span, h1, h2, h3, h4, h5, h6, a, li, td, th {
+  @apply !text-black;
 }
 
-/* Button colors - blue */
+/* ======================================= */
+/* Buttons */
+/* Base styles */
 button,
 input[type="submit"],
 .btn,
 .pf-c-button {
-    @apply bg-blue-600 text-white hover:bg-blue-700;
+  @apply bg-blue-600 text-white;
+  background-color: #2563eb; /* fallback for important */
 }
 
+/* Hover styles (plain CSS with !important) */
+button:hover,
+input[type="submit"]:hover,
+.btn:hover,
+.pf-c-button:hover {
+  background-color: #1d4ed8 !important;
+}
+
+/* Disabled styles */
 button:disabled,
 input[type="submit"]:disabled,
 .btn:disabled {
-    @apply bg-gray-400 cursor-not-allowed;
+  @apply bg-gray-400 cursor-not-allowed;
+  background-color: #9ca3af !important;
 }
 
-/* Logo sizing */
+/* ======================================= */
+/* Logo */
 #kc-header-wrapper img {
-    width: 180px;
-    height: auto;
+  width: 180px;
+  height: auto;
+}
+
+/* ======================================= */
+/* Optional: Remove dark theme override if Keycloak adds it */
+html.pf-theme-dark,
+body.pf-theme-dark {
+  background-color: #ffffff !important;
 }
