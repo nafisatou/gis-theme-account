@@ -68,17 +68,40 @@ textarea {
   border-color: #00000030 !important;
 }
 
-/* All buttons - blue */
+/* All buttons - blue with black text */
 button,
 input[type="submit"],
 input[type="button"],
 .btn,
 .pf-c-button,
 [class*="btn"],
-[class*="button"] {
+[class*="button"],
+a[role="button"],
+[role="button"],
+.pf-c-dropdown__toggle,
+.pf-c-menu__item-action,
+.pf-c-select__toggle {
   background-color: #2563eb !important;
-  color: #ffffff !important;
+  color: #000000 !important;
   border-color: #2563eb !important;
+  border: none !important;
+}
+
+/* Button icons and content */
+button *,
+input[type="submit"] *,
+input[type="button"] *,
+.btn *,
+.pf-c-button *,
+[class*="btn"] *,
+[class*="button"] *,
+a[role="button"] *,
+[role="button"] *,
+.pf-c-dropdown__toggle *,
+.pf-c-menu__item-action *,
+.pf-c-select__toggle * {
+  background-color: transparent !important;
+  color: #000000 !important;
 }
 
 /* Button hover states */
@@ -88,9 +111,47 @@ input[type="button"]:hover,
 .btn:hover,
 .pf-c-button:hover,
 [class*="btn"]:hover,
-[class*="button"]:hover {
+[class*="button"]:hover,
+a[role="button"]:hover,
+[role="button"]:hover,
+.pf-c-dropdown__toggle:hover,
+.pf-c-menu__item-action:hover,
+.pf-c-select__toggle:hover {
   background-color: #1d4ed8 !important;
   border-color: #1d4ed8 !important;
+  color: #000000 !important;
+}
+
+/* Hover state for button children */
+button:hover *,
+input[type="submit"]:hover *,
+.btn:hover *,
+.pf-c-button:hover *,
+.pf-c-dropdown__toggle:hover *,
+.pf-c-select__toggle:hover * {
+  background-color: transparent !important;
+  color: #000000 !important;
+}
+
+/* Button focus states */
+button:focus,
+input[type="submit"]:focus,
+input[type="button"]:focus,
+.btn:focus,
+.pf-c-button:focus {
+  background-color: #1d4ed8 !important;
+  color: #000000 !important;
+  outline: none !important;
+}
+
+/* Button active states */
+button:active,
+input[type="submit"]:active,
+input[type="button"]:active,
+.btn:active,
+.pf-c-button:active {
+  background-color: #1e40af !important;
+  color: #000000 !important;
 }
 
 /* Button disabled states */
@@ -100,9 +161,17 @@ input[type="button"]:disabled,
 .btn:disabled,
 .pf-c-button:disabled {
   background-color: #9ca3af !important;
-  color: #ffffff !important;
+  color: #000000 !important;
   border-color: #9ca3af !important;
   cursor: not-allowed !important;
+}
+
+/* Remove any button styling that might override */
+button::before,
+button::after,
+input[type="submit"]::before,
+input[type="submit"]::after {
+  background-color: transparent !important;
 }
 
 /* Remove any PatternFly dark theme leftovers */
