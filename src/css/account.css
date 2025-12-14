@@ -1,182 +1,187 @@
-/* Force full light mode */
-:root, html, body, * {
-  background: #ffffff !important;
-  color: #000000 !important;
+/* ============================================
+   PATTERNFLY CSS VARIABLE OVERRIDES
+   Force light mode by overriding PatternFly's
+   CSS custom properties at the root level
+   ============================================ */
 
-  /* PatternFly global theming overrides */
-  --pf-global--Color--100: #000000 !important;
-  --pf-global--Color--200: #000000 !important;
-  --pf-global--Color--300: #000000 !important;
-  --pf-global--Color--400: #000000 !important;
-  --pf-global--Color--light-100: #000000 !important;
+:root,
+:root.pf-v5-theme-dark,
+html,
+html.pf-v5-theme-dark,
+body {
+  /* Background Colors - Force Light Gray for Page */
+  --pf-v5-global--BackgroundColor--100: #ededed !important;
+  --pf-v5-global--BackgroundColor--200: #ffffff !important;
+  --pf-v5-global--BackgroundColor--dark-100: #ededed !important;
+  --pf-v5-global--BackgroundColor--dark-200: #2b2e35 !important;
 
-  --pf-global--BackgroundColor--100: #ffffff !important;
-  --pf-global--BackgroundColor--200: #ffffff !important;
-  --pf-global--BackgroundColor--light-100: #ffffff !important;
-  --pf-global--BackgroundColor--light-200: #ffffff !important;
-  --pf-global--BackgroundColor--dark-100: #ffffff !important;
-  --pf-global--BackgroundColor--dark-200: #ffffff !important;
+  /* Text Colors - Force Dark Text */
+  --pf-v5-global--Color--100: #151515 !important;
+  --pf-v5-global--Color--200: #151515 !important;
+  --pf-v5-global--Color--light-100: #ffffff !important;
 
-  /* Additional PatternFly color overrides */
-  --pf-c-page__sidebar--BackgroundColor: #ffffff !important;
-  --pf-c-nav--BackgroundColor: #ffffff !important;
-  --pf-c-card--BackgroundColor: #ffffff !important;
+  /* Component-specific overrides */
+  --pf-v5-c-page--BackgroundColor: #ededed !important;
+  --pf-v5-c-page__sidebar--BackgroundColor: #ffffff !important;
+  --pf-v5-c-page__main--BackgroundColor: #ededed !important;
+  --pf-v5-c-masthead--BackgroundColor: #2b2e35 !important;
+  --pf-v5-c-card--BackgroundColor: #ffffff !important;
+  --pf-v5-c-nav--BackgroundColor: #ffffff !important;
 }
 
-/* Catch ALL elements with pf classes */
-[class*="pf-"] {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-  border-color: #00000020 !important;
+/* ============================================
+   LAYOUT STRUCTURE OVERRIDES
+   Target specific Keycloak/PatternFly components
+   ============================================ */
+
+/* Page Background */
+html,
+body,
+.pf-v5-c-page,
+.pf-v5-c-page__drawer {
+  background-color: #ededed !important;
 }
 
-/* Account management layout containers */
-#kc-account,
-#kc-account-wrapper,
+/* Header/Masthead - Dark Theme */
+.pf-v5-c-masthead,
 #kc-header,
-#kc-content,
-#kc-content-wrapper {
+.pf-v5-c-page__header {
+  background-color: #2b2e35 !important;
+  color: #ffffff !important;
+}
+
+.pf-v5-c-masthead *,
+#kc-header *,
+.pf-v5-c-page__header * {
+  color: #ffffff !important;
+}
+
+/* Logo - Make White on Dark Background */
+.pf-v5-c-masthead img,
+#kc-header img,
+img[src*="adorsys"],
+img[src*="logo"] {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* Main Content Area - Light Gray Background */
+.pf-v5-c-page__main,
+.pf-v5-c-page__main-section,
+#kc-content-wrapper,
+.pf-v5-c-drawer__content {
+  background-color: #ededed !important;
+  color: #151515 !important;
+}
+
+/* Sidebar - White Background */
+.pf-v5-c-page__sidebar,
+.pf-v5-c-page__sidebar-body,
+.pf-v5-c-drawer__panel {
   background-color: #ffffff !important;
-  color: #000000 !important;
+  color: #151515 !important;
 }
 
-/* Sidebar section on account management */
-.pf-c-page__sidebar,
-.pf-c-nav,
-.pf-c-nav__list,
-.pf-c-nav__item,
-.pf-c-nav__link {
+/* Navigation - White Background */
+.pf-v5-c-nav,
+.pf-v5-c-nav__list,
+.pf-v5-c-nav__item {
   background-color: #ffffff !important;
-  color: #000000 !important;
+  color: #151515 !important;
 }
 
-/* Hover/active menu links */
-.pf-c-nav__link:hover,
-.pf-c-nav__link.pf-m-current {
-  background-color: #f0f0f0 !important;
-  color: #000000 !important;
+.pf-v5-c-nav__link {
+  background-color: #ffffff !important;
+  color: #151515 !important;
 }
 
-/* Cards, forms, inputs */
-.pf-c-card,
-.pf-c-form,
+.pf-v5-c-nav__link:hover,
+.pf-v5-c-nav__link.pf-m-current {
+  background-color: #f5f5f5 !important;
+  color: #151515 !important;
+}
+
+/* Cards - White with Shadow */
+.pf-v5-c-card,
+.pf-v5-c-card__body,
+.pf-v5-c-card__header {
+  background-color: #ffffff !important;
+  color: #151515 !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+
+/* Inputs, Selects, Textareas */
+.pf-v5-c-form-control,
 input,
 select,
 textarea {
   background-color: #ffffff !important;
-  color: #000000 !important;
-  border-color: #00000030 !important;
+  color: #151515 !important;
+  border: 1px solid #c7c7c7 !important;
 }
 
-/* All buttons - blue with black text */
+/* Labels */
+.pf-v5-c-form__label,
+label {
+  color: #151515 !important;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+/* Primary Buttons */
+.pf-v5-c-button,
+.pf-v5-c-button.pf-m-primary,
 button,
-input[type="submit"],
-input[type="button"],
-.btn,
-.pf-c-button,
-[class*="btn"],
-[class*="button"],
-a[role="button"],
-[role="button"],
-.pf-c-dropdown__toggle,
-.pf-c-menu__item-action,
-.pf-c-select__toggle {
+.btn {
   background-color: #2563eb !important;
-  color: #000000 !important;
-  border-color: #2563eb !important;
+  color: #ffffff !important;
   border: none !important;
 }
 
-/* Button icons and content */
-button *,
-input[type="submit"] *,
-input[type="button"] *,
-.btn *,
-.pf-c-button *,
-[class*="btn"] *,
-[class*="button"] *,
-a[role="button"] *,
-[role="button"] *,
-.pf-c-dropdown__toggle *,
-.pf-c-menu__item-action *,
-.pf-c-select__toggle * {
-  background-color: transparent !important;
-  color: #000000 !important;
-}
-
-/* Button hover states */
+.pf-v5-c-button:hover,
+.pf-v5-c-button.pf-m-primary:hover,
 button:hover,
-input[type="submit"]:hover,
-input[type="button"]:hover,
-.btn:hover,
-.pf-c-button:hover,
-[class*="btn"]:hover,
-[class*="button"]:hover,
-a[role="button"]:hover,
-[role="button"]:hover,
-.pf-c-dropdown__toggle:hover,
-.pf-c-menu__item-action:hover,
-.pf-c-select__toggle:hover {
+.btn:hover {
   background-color: #1d4ed8 !important;
-  border-color: #1d4ed8 !important;
-  color: #000000 !important;
+  color: #ffffff !important;
 }
 
-/* Hover state for button children */
-button:hover *,
-input[type="submit"]:hover *,
-.btn:hover *,
-.pf-c-button:hover *,
-.pf-c-dropdown__toggle:hover *,
-.pf-c-select__toggle:hover * {
-  background-color: transparent !important;
-  color: #000000 !important;
+/* ============================================
+   TEXT ELEMENTS
+   Ensure all text is readable
+   ============================================ */
+
+.pf-v5-c-content,
+.pf-v5-c-title,
+p,
+span,
+div {
+  color: #151515 !important;
 }
 
-/* Button focus states */
-button:focus,
-input[type="submit"]:focus,
-input[type="button"]:focus,
-.btn:focus,
-.pf-c-button:focus {
-  background-color: #1d4ed8 !important;
-  color: #000000 !important;
-  outline: none !important;
+/* Exception: Keep header text white */
+.pf-v5-c-masthead p,
+.pf-v5-c-masthead span,
+.pf-v5-c-masthead div,
+#kc-header p,
+#kc-header span,
+#kc-header div {
+  color: #ffffff !important;
 }
 
-/* Button active states */
-button:active,
-input[type="submit"]:active,
-input[type="button"]:active,
-.btn:active,
-.pf-c-button:active {
-  background-color: #1e40af !important;
-  color: #000000 !important;
-}
+/* ============================================
+   FORCE DISABLE DARK MODE
+   Nuclear option to override any dark mode
+   ============================================ */
 
-/* Button disabled states */
-button:disabled,
-input[type="submit"]:disabled,
-input[type="button"]:disabled,
-.btn:disabled,
-.pf-c-button:disabled {
-  background-color: #9ca3af !important;
-  color: #000000 !important;
-  border-color: #9ca3af !important;
-  cursor: not-allowed !important;
-}
-
-/* Remove any button styling that might override */
-button::before,
-button::after,
-input[type="submit"]::before,
-input[type="submit"]::after {
-  background-color: transparent !important;
-}
-
-/* Remove any PatternFly dark theme leftovers */
-.pf-theme-dark,
-.pf-m-dark {
-  background-color: #ffffff !important;
-  color: #000000 !important;
+.pf-v5-theme-dark,
+.pf-m-dark,
+[class*="dark"] {
+  --pf-v5-global--BackgroundColor--100: #ededed !important;
+  --pf-v5-global--Color--100: #151515 !important;
 }
