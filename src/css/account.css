@@ -1,26 +1,18 @@
-/* ============================================
-   PATTERNFLY CSS VARIABLE OVERRIDES
-   Force light mode by overriding PatternFly's
-   CSS custom properties at the root level
-   ============================================ */
 
 :root,
 :root.pf-v5-theme-dark,
 html,
 html.pf-v5-theme-dark,
 body {
-  /* Background Colors - Force Light Gray for Page */
   --pf-v5-global--BackgroundColor--100: #ededed !important;
   --pf-v5-global--BackgroundColor--200: #ffffff !important;
   --pf-v5-global--BackgroundColor--dark-100: #ededed !important;
   --pf-v5-global--BackgroundColor--dark-200: #2b2e35 !important;
 
-  /* Text Colors - Force Dark Text */
   --pf-v5-global--Color--100: #151515 !important;
   --pf-v5-global--Color--200: #151515 !important;
   --pf-v5-global--Color--light-100: #ffffff !important;
 
-  /* Component-specific overrides */
   --pf-v5-c-page--BackgroundColor: #ededed !important;
   --pf-v5-c-page__sidebar--BackgroundColor: #ffffff !important;
   --pf-v5-c-page__main--BackgroundColor: #ededed !important;
@@ -29,12 +21,6 @@ body {
   --pf-v5-c-nav--BackgroundColor: #ffffff !important;
 }
 
-/* ============================================
-   LAYOUT STRUCTURE OVERRIDES
-   Target specific Keycloak/PatternFly components
-   ============================================ */
-
-/* Page Background */
 html,
 body,
 .pf-v5-c-page,
@@ -42,7 +28,6 @@ body,
   background-color: #ededed !important;
 }
 
-/* Header/Masthead - Dark Theme */
 .pf-v5-c-masthead,
 #kc-header,
 .pf-v5-c-page__header {
@@ -56,13 +41,11 @@ body,
   color: #ffffff !important;
 }
 
-/* Logo - Keep Original Blue Color (No Filter) */
 .pf-v5-c-masthead img,
 #kc-header img {
   filter: none !important;
 }
 
-/* Main Content Area - Light Gray Background */
 .pf-v5-c-page__main,
 .pf-v5-c-page__main-section,
 #kc-content-wrapper,
@@ -71,7 +54,6 @@ body,
   color: #151515 !important;
 }
 
-/* Sidebar - White Background */
 .pf-v5-c-page__sidebar,
 .pf-v5-c-page__sidebar-body,
 .pf-v5-c-drawer__panel {
@@ -79,7 +61,6 @@ body,
   color: #151515 !important;
 }
 
-/* Navigation - White Background */
 .pf-v5-c-nav,
 .pf-v5-c-nav__list,
 .pf-v5-c-nav__item {
@@ -98,7 +79,6 @@ body,
   color: #151515 !important;
 }
 
-/* Cards - White with Shadow */
 .pf-v5-c-card,
 .pf-v5-c-card__body,
 .pf-v5-c-card__header,
@@ -108,8 +88,6 @@ body,
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
 }
 
-
-/* Data Lists, Tables, and Content Containers */
 .pf-v5-c-data-list,
 .pf-v5-c-data-list__item,
 .pf-v5-c-data-list__cell,
@@ -125,7 +103,6 @@ body,
   color: #151515 !important;
 }
 
-/* Badges and Labels - Fix Dark Ovals */
 .pf-v5-c-badge,
 .pf-v5-c-label,
 .pf-v5-c-label__content,
@@ -137,14 +114,12 @@ span[class*="label"] {
   border: none !important;
 }
 
-/* Button Groups - Add Spacing */
 .pf-v5-c-button+.pf-v5-c-button,
 button+button,
 .pf-v5-c-toolbar__item+.pf-v5-c-toolbar__item {
   margin-left: 0.5rem !important;
 }
 
-/* Toolbar and Action Groups */
 .pf-v5-c-toolbar,
 .pf-v5-c-toolbar__content,
 .pf-v5-c-toolbar__content-section {
@@ -152,12 +127,6 @@ button+button,
   gap: 0.5rem !important;
 }
 
-
-/* ============================================
-   FORM ELEMENTS
-   ============================================ */
-
-/* Inputs, Selects, Textareas */
 .pf-v5-c-form-control,
 input,
 select,
@@ -167,17 +136,11 @@ textarea {
   border: 1px solid #c7c7c7 !important;
 }
 
-/* Labels */
 .pf-v5-c-form__label,
 label {
   color: #151515 !important;
 }
 
-/* ============================================
-   BUTTONS
-   ============================================ */
-
-/* Primary Buttons */
 .pf-v5-c-button,
 .pf-v5-c-button.pf-m-primary,
 button,
@@ -195,11 +158,6 @@ button:hover,
   color: #ffffff !important;
 }
 
-/* ============================================
-   TEXT ELEMENTS
-   Ensure all text is readable
-   ============================================ */
-
 .pf-v5-c-content,
 .pf-v5-c-title,
 p,
@@ -208,7 +166,6 @@ div {
   color: #151515 !important;
 }
 
-/* Exception: Keep header text white */
 .pf-v5-c-masthead p,
 .pf-v5-c-masthead span,
 .pf-v5-c-masthead div,
@@ -217,11 +174,6 @@ div {
 #kc-header div {
   color: #ffffff !important;
 }
-
-/* ============================================
-   FORCE DISABLE DARK MODE
-   Nuclear option to override any dark mode
-   ============================================ */
 
 .pf-v5-theme-dark,
 .pf-m-dark,
