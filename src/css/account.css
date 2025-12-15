@@ -134,7 +134,7 @@ span[class*="badge"],
 span[class*="label"] {
   background-color: #ededed !important;
   color: #151515 !important;
-  border: 1px solid #c7c7c7 !important;
+  border: none !important;
 }
 
 /* Button Groups - Add Spacing */
