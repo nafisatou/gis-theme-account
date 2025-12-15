@@ -108,11 +108,12 @@ body,
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
 }
 
+
 /* Data Lists, Tables, and Content Containers */
 .pf-v5-c-data-list,
 .pf-v5-c-data-list__item,
 .pf-v5-c-data-list__cell,
-.pf-v5-c-table,defined
+.pf-v5-c-table,
 .pf-v5-c-table tbody,
 .pf-v5-c-table tr,
 .pf-v5-c-table td,
@@ -123,6 +124,34 @@ body,
   background-color: #ffffff !important;
   color: #151515 !important;
 }
+
+/* Badges and Labels - Fix Dark Ovals */
+.pf-v5-c-badge,
+.pf-v5-c-label,
+.pf-v5-c-label__content,
+.pf-v5-c-label__text,
+span[class*="badge"],
+span[class*="label"] {
+  background-color: #ededed !important;
+  color: #151515 !important;
+  border: 1px solid #c7c7c7 !important;
+}
+
+/* Button Groups - Add Spacing */
+.pf-v5-c-button+.pf-v5-c-button,
+button+button,
+.pf-v5-c-toolbar__item+.pf-v5-c-toolbar__item {
+  margin-left: 0.5rem !important;
+}
+
+/* Toolbar and Action Groups */
+.pf-v5-c-toolbar,
+.pf-v5-c-toolbar__content,
+.pf-v5-c-toolbar__content-section {
+  background-color: transparent !important;
+  gap: 0.5rem !important;
+}
+
 
 /* ============================================
    FORM ELEMENTS
