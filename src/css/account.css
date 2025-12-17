@@ -1,183 +1,218 @@
+@import "tailwindcss";
+@import "./base.css";
 
-:root,
-:root.pf-v5-theme-dark,
-html,
-html.pf-v5-theme-dark,
+/* Account Management - Match Login Page Design */
+
+/* ============================================
+   COLOR SCHEME
+   Header: Dark gray (#2b2e35)
+   Sidebar: White
+   Background: Light gray (#ededed)
+   Inputs: White with subtle border
+   ============================================ */
+
+:root {
+  --pf-v5-global--BackgroundColor--100: #ededed;
+  --pf-v5-c-page--BackgroundColor: #ededed;
+}
+
 body {
-  --pf-v5-global--BackgroundColor--100: #ededed !important;
-  --pf-v5-global--BackgroundColor--200: #ffffff !important;
-  --pf-v5-global--BackgroundColor--dark-100: #ededed !important;
-  --pf-v5-global--BackgroundColor--dark-200: #2b2e35 !important;
-
-  --pf-v5-global--Color--100: #151515 !important;
-  --pf-v5-global--Color--200: #151515 !important;
-  --pf-v5-global--Color--light-100: #ffffff !important;
-
-  --pf-v5-c-page--BackgroundColor: #ededed !important;
-  --pf-v5-c-page__sidebar--BackgroundColor: #ffffff !important;
-  --pf-v5-c-page__main--BackgroundColor: #ededed !important;
-  --pf-v5-c-masthead--BackgroundColor: #2b2e35 !important;
-  --pf-v5-c-card--BackgroundColor: #ffffff !important;
-  --pf-v5-c-nav--BackgroundColor: #ffffff !important;
-}
-
-html,
-body,
-.pf-v5-c-page,
-.pf-v5-c-page__drawer {
   background-color: #ededed !important;
+  @apply text-base-content font-sans antialiased;
 }
+
+/* ============================================
+   HEADER - Light gray (matching logo background)
+   ============================================ */
+
+/* ============================================
+   HEADER - White (matching logo background)
+   ============================================ */
 
 .pf-v5-c-masthead,
-#kc-header,
 .pf-v5-c-page__header {
-  background-color: #2b2e35 !important;
-  color: #ffffff !important;
+  background-color: #ffffff !important;
+  @apply text-gray-900 border-b border-gray-200 shadow-sm;
 }
 
 .pf-v5-c-masthead *,
-#kc-header *,
 .pf-v5-c-page__header * {
-  color: #ffffff !important;
+  color: #151515 !important;
 }
 
-.pf-v5-c-masthead img,
-#kc-header img {
+.pf-v5-c-masthead img {
   filter: none !important;
 }
 
-.pf-v5-c-page__main,
-.pf-v5-c-page__main-section,
-#kc-content-wrapper,
-.pf-v5-c-drawer__content {
+/* ============================================
+   LAYOUT
+   ============================================ */
+
+.pf-v5-c-page,
+.pf-v5-c-page__main {
   background-color: #ededed !important;
-  color: #151515 !important;
 }
 
-.pf-v5-c-page__sidebar,
-.pf-v5-c-page__sidebar-body,
-.pf-v5-c-drawer__panel {
-  background-color: #ffffff !important;
-  color: #151515 !important;
+.pf-v5-c-page__main-section {
+  background-color: #ededed !important;
 }
 
-.pf-v5-c-nav,
-.pf-v5-c-nav__list,
-.pf-v5-c-nav__item {
-  background-color: #ffffff !important;
-  color: #151515 !important;
+/* Sidebar - White */
+.pf-v5-c-page__sidebar {
+  background-color: white !important;
+  @apply shadow-sm border-r border-gray-200;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+.pf-v5-c-nav {
+  background-color: white !important;
 }
 
 .pf-v5-c-nav__link {
-  background-color: #ffffff !important;
-  color: #151515 !important;
+  @apply text-gray-700 hover:text-primary hover:bg-blue-50;
+  @apply rounded-r-2xl mr-3 transition-all duration-200 px-4 py-2;
 }
 
-.pf-v5-c-nav__link:hover,
 .pf-v5-c-nav__link.pf-m-current {
-  background-color: #f5f5f5 !important;
-  color: #151515 !important;
+  @apply bg-blue-50 text-primary font-bold border-l-4 border-primary;
 }
 
-.pf-v5-c-card,
-.pf-v5-c-card__body,
-.pf-v5-c-card__header,
-.pf-v5-c-card__title {
-  background-color: #ffffff !important;
-  color: #151515 !important;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+/* ============================================
+   CARDS & LISTS - Completely White
+   ============================================ */
+
+.pf-v5-c-card {
+  background-color: white !important;
+  @apply rounded-xl shadow-sm border border-gray-100;
 }
 
+.pf-v5-c-card__title,
+.pf-v5-c-card__header {
+  background-color: white !important;
+  @apply px-6 pt-6 font-bold text-gray-900 border-none;
+}
+
+.pf-v5-c-card__body {
+  background-color: white !important;
+  @apply px-6 pb-6 text-gray-700;
+}
+
+/* Fix dark spots in data lists and tables */
 .pf-v5-c-data-list,
 .pf-v5-c-data-list__item,
+.pf-v5-c-data-list__item-row,
 .pf-v5-c-data-list__cell,
 .pf-v5-c-table,
+.pf-v5-c-table thead,
 .pf-v5-c-table tbody,
 .pf-v5-c-table tr,
-.pf-v5-c-table td,
-.pf-v5-c-empty-state,
-.pf-v5-c-empty-state__content,
-.pf-v5-c-description-list,
-.pf-v5-c-description-list__group {
-  background-color: #ffffff !important;
+.pf-v5-c-table th,
+.pf-v5-c-table td {
+  background-color: white !important;
   color: #151515 !important;
+  border-color: #e5e7eb !important;
 }
 
-.pf-v5-c-badge,
-.pf-v5-c-label,
-.pf-v5-c-label__content,
-.pf-v5-c-label__text,
-span[class*="badge"],
-span[class*="label"] {
-  background-color: #ededed !important;
-  color: #151515 !important;
+/* Remove default PatternFly shadows/borders on these items that look dark */
+.pf-v5-c-data-list__item {
+  box-shadow: none !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+/* ============================================
+   FORMS - Zero Box Style
+   ============================================ */
+
+.pf-v5-c-form-control,
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  background-color: white !important;
+  border: 1px solid #d1d5db !important;
+  @apply w-full px-4 py-2 rounded shadow-none;
+  @apply text-gray-900 placeholder:text-gray-400;
+  @apply focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-gray-400;
+  @apply transition-all duration-150;
+}
+
+/* Remove wrapper generic styling if existing */
+.pf-v5-c-form-control {
+  background: transparent !important;
+  padding: 0 !important;
   border: none !important;
 }
 
-.pf-v5-c-button+.pf-v5-c-button,
-button+button,
-.pf-v5-c-toolbar__item+.pf-v5-c-toolbar__item {
-  margin-left: 0.5rem !important;
-}
-
-.pf-v5-c-toolbar,
-.pf-v5-c-toolbar__content,
-.pf-v5-c-toolbar__content-section {
-  background-color: transparent !important;
-  gap: 0.5rem !important;
-}
-
-.pf-v5-c-form-control,
-input,
-select,
-textarea {
-  background-color: #ffffff !important;
-  color: #151515 !important;
-  border: 1px solid #c7c7c7 !important;
+/* Target actual input inside wrapper if PF nests it, or the input itself */
+.pf-v5-c-form-control input,
+.pf-v5-c-form-control select,
+.pf-v5-c-form-control textarea {
+  background-color: white !important;
+  border: 1px solid #d1d5db !important;
+  @apply px-4 py-2 rounded;
 }
 
 .pf-v5-c-form__label,
 label {
-  color: #151515 !important;
+  @apply text-gray-700 font-medium mb-1 text-sm;
 }
 
-.pf-v5-c-button,
-.pf-v5-c-button.pf-m-primary,
-button,
-.btn {
-  background-color: #2563eb !important;
-  color: #ffffff !important;
+/* ============================================
+   BUTTONS - Blue primary
+   ============================================ */
+
+.pf-v5-c-button {
+  @apply rounded-lg px-6 py-2.5 font-medium;
+  @apply transition-all duration-200;
   border: none !important;
 }
 
-.pf-v5-c-button:hover,
-.pf-v5-c-button.pf-m-primary:hover,
-button:hover,
-.btn:hover {
-  background-color: #1d4ed8 !important;
-  color: #ffffff !important;
+.pf-v5-c-button.pf-m-primary {
+  background-color: #2563eb !important;
+  @apply text-white hover:bg-blue-700;
 }
 
-.pf-v5-c-content,
-.pf-v5-c-title,
-p,
-span,
-div {
-  color: #151515 !important;
+.pf-v5-c-button.pf-m-secondary {
+  @apply bg-gray-200 text-gray-700 hover:bg-gray-300;
 }
 
-.pf-v5-c-masthead p,
-.pf-v5-c-masthead span,
-.pf-v5-c-masthead div,
-#kc-header p,
-#kc-header span,
-#kc-header div {
-  color: #ffffff !important;
+/* ============================================
+   TABLES & DATA LISTS
+   ============================================ */
+
+.pf-v5-c-table,
+.pf-v5-c-data-list {
+  background-color: white !important;
+  @apply rounded-xl overflow-hidden;
 }
 
+.pf-v5-c-table tbody tr,
+.pf-v5-c-data-list__item {
+  @apply hover:bg-gray-50 transition-colors;
+}
+
+.pf-v5-c-table td,
+.pf-v5-c-data-list__cell {
+  @apply text-gray-700;
+}
+
+/* ============================================
+   BADGES & LABELS
+   ============================================ */
+
+.pf-v5-c-badge,
+.pf-v5-c-label {
+  @apply rounded-full px-3 py-1 text-sm bg-gray-200 text-gray-700 border-none;
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+/* Remove PatternFly dark theme */
 .pf-v5-theme-dark,
-.pf-m-dark,
-[class*="dark"] {
+.pf-m-dark {
   --pf-v5-global--BackgroundColor--100: #ededed !important;
-  --pf-v5-global--Color--100: #151515 !important;
 }

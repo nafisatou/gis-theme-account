@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+    themes: light;
+    --rounded-box: 1.5rem;
+    --rounded-btn: 9999px;
+    --rounded-badge: 9999px;
+}

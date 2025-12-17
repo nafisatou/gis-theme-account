@@ -7,7 +7,7 @@ import CopyPlugin from 'copy-webpack-plugin';
 const config: Configuration = {
     entry: {
         main: './src/index.ts',
-        account: './src/css/account.css'
+        account: './src/account.ts'
     },
     devtool: false,
     output: {
