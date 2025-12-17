@@ -29,7 +29,9 @@ body {
    HEADER - AGGRESSIVELY FORCE WHITE
    ============================================ */
 
+/* Target every possible header container and modifier */
 .pf-v5-c-masthead,
+.pf-v5-c-masthead.pf-m-dark,
 .pf-v5-c-masthead__main,
 .pf-v5-c-masthead__main::before,
 .pf-v5-c-masthead__content,
@@ -37,8 +39,18 @@ body {
 .pf-v5-c-page__header-brand,
 .pf-v5-c-page__header-tools,
 header,
-header * {
+header.pf-m-dark,
+.pf-v5-c-masthead__tools {
   background-color: #ffffff !important;
+  color: #151515 !important;
+  --pf-v5-c-masthead--BackgroundColor: #ffffff !important;
+  --pf-v5-c-masthead__toggle--Color: #151515 !important;
+}
+
+/* Ensure all text inside header is dark */
+.pf-v5-c-masthead *,
+.pf-v5-c-page__header *,
+.pf-v5-c-masthead__tools * {
   color: #151515 !important;
 }
 
@@ -56,6 +68,30 @@ header * {
 .pf-v5-c-masthead::before,
 .pf-v5-c-masthead::after {
   background: white !important;
+}
+
+/* ============================================
+   TEXT VISIBILITY - Force Dark Text Globally
+   ============================================ */
+
+/* Generic content text */
+.pf-v5-c-content p,
+.pf-v5-c-content small,
+.pf-v5-c-helper-text,
+.pf-v5-c-form__helper-text,
+.pf-v5-c-content,
+.pf-v5-c-card__body {
+  color: #111827 !important;
+  /* gray-900 */
+}
+
+/* Subtitles / Light text - Make them visible */
+small,
+.pf-v5-u-color-200,
+.pf-v5-u-color-300,
+.text-muted {
+  color: #4b5563 !important;
+  /* gray-600 - dark enough to see */
 }
 
 /* ============================================
