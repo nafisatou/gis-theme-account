@@ -26,22 +26,36 @@ body {
    ============================================ */
 
 /* ============================================
-   HEADER - White (matching logo background)
+   HEADER - AGGRESSIVELY FORCE WHITE
    ============================================ */
 
 .pf-v5-c-masthead,
-.pf-v5-c-page__header {
+.pf-v5-c-masthead__main,
+.pf-v5-c-masthead__main::before,
+.pf-v5-c-masthead__content,
+.pf-v5-c-page__header,
+.pf-v5-c-page__header-brand,
+.pf-v5-c-page__header-tools,
+header,
+header * {
   background-color: #ffffff !important;
-  @apply text-gray-900 border-b border-gray-200 shadow-sm;
+  color: #151515 !important;
 }
 
-.pf-v5-c-masthead *,
-.pf-v5-c-page__header * {
-  color: #151515 !important;
+/* Ensure branding/logo area is also white */
+.pf-v5-c-masthead__brand,
+.pf-v5-c-brand {
+  background-color: #ffffff !important;
 }
 
 .pf-v5-c-masthead img {
   filter: none !important;
+}
+
+/* Remove any dark pseudo-elements */
+.pf-v5-c-masthead::before,
+.pf-v5-c-masthead::after {
+  background: white !important;
 }
 
 /* ============================================
@@ -55,6 +69,18 @@ body {
 
 .pf-v5-c-page__main-section {
   background-color: #ededed !important;
+}
+
+/* Page Title / Section Title Visibility */
+.pf-v5-c-title,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #111827 !important;
+  /* gray-900 */
 }
 
 /* Sidebar - White */
@@ -71,17 +97,42 @@ body {
   background-color: white !important;
 }
 
-.pf-v5-c-nav__link {
-  @apply text-gray-700 hover:text-primary hover:bg-blue-50;
-  @apply rounded-r-2xl mr-3 transition-all duration-200 px-4 py-2;
+.pf-v5-c-nav__list {
+  background-color: white !important;
 }
 
-.pf-v5-c-nav__link.pf-m-current {
-  @apply bg-blue-50 text-primary font-bold border-l-4 border-primary;
+.pf-v5-c-nav__link {
+  color: #374151 !important;
+  /* gray-700 */
+  @apply hover:bg-blue-50;
+  @apply rounded-r-2xl mr-3 transition-all duration-200 px-4 py-3;
+}
+
+.pf-v5-c-nav__link:hover {
+  color: #1d4ed8 !important;
+  /* blue-700 */
+}
+
+/* Selected state - HIGH CONTRAST */
+.pf-v5-c-nav__link.pf-m-current,
+.pf-v5-c-nav__link.pf-m-current:hover,
+.pf-v5-c-nav__link.pf-m-current:visited {
+  background-color: #eff6ff !important;
+  /* blue-50 */
+  color: #1d4ed8 !important;
+  /* blue-700 */
+  font-weight: 800 !important;
+  border-left: 4px solid #2563eb !important;
+  /* blue-600 */
+}
+
+.pf-v5-c-nav__link.pf-m-current::after {
+  content: none !important;
+  /* Remove any default PF lines */
 }
 
 /* ============================================
-   CARDS & LISTS - Completely White
+   CARDS & LISTS - Completely White & Visible Text
    ============================================ */
 
 .pf-v5-c-card {
@@ -92,12 +143,33 @@ body {
 .pf-v5-c-card__title,
 .pf-v5-c-card__header {
   background-color: white !important;
-  @apply px-6 pt-6 font-bold text-gray-900 border-none;
+  color: #111827 !important;
+  /* gray-900 */
+  @apply px-6 pt-6 font-bold border-none;
 }
 
-.pf-v5-c-card__body {
+.pf-v5-c-card__body,
+.pf-v5-c-card__body * {
   background-color: white !important;
-  @apply px-6 pb-6 text-gray-700;
+  color: #374151 !important;
+  /* gray-700 */
+}
+
+/* Exclude buttons from the catch-all above */
+.pf-v5-c-card__body .pf-v5-c-button {
+  color: white !important;
+  /* Primary buttons need white text */
+}
+
+.pf-v5-c-card__body .pf-v5-c-button.pf-m-secondary,
+.pf-v5-c-card__body .pf-v5-c-button.pf-m-tertiary {
+  color: #374151 !important;
+  /* Secondary buttons dark text */
+}
+
+.pf-v5-c-card__body a {
+  color: #2563eb !important;
+  /* Links blue */
 }
 
 /* Fix dark spots in data lists and tables */
