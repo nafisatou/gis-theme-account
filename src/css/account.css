@@ -14,7 +14,6 @@
 :root {
   --pf-v5-global--BackgroundColor--100: #ededed;
   --pf-v5-c-page--BackgroundColor: #ededed;
-  --pf-v5-c-page__sidebar--BackgroundColor: #ffffff !important;
 }
 
 body {
@@ -31,6 +30,7 @@ body {
    ============================================ */
 
 /* Target every possible header container and modifier */
+/* Target every possible header container and modifier */
 .pf-v5-c-masthead,
 .pf-v5-c-masthead.pf-m-dark,
 .pf-v5-c-masthead__main,
@@ -41,24 +41,127 @@ body {
 .pf-v5-c-page__header-tools,
 header,
 header.pf-m-dark,
-.pf-v5-c-masthead__tools {
+.pf-v5-c-masthead__tools,
+.pf-v5-c-masthead__brand,
+.pf-v5-c-brand,
+/* Universal substring matching for any undetected masthead elements */
+[class*="masthead"],
+[class*="page__header"] {
+  background: #ffffff !important;
+  /* Shorthand overrides image/color */
   background-color: #ffffff !important;
   color: #151515 !important;
+
+  /* Override ALL PatternFly background variables */
   --pf-v5-c-masthead--BackgroundColor: #ffffff !important;
+  --pf-v5-c-masthead--BackgroundColor--dark-100: #ffffff !important;
+  --pf-v5-c-masthead--BackgroundColor--dark-200: #ffffff !important;
+  --pf-v5-global--BackgroundColor--dark-100: #ffffff !important;
+  --pf-v5-c-page__header--BackgroundColor: #ffffff !important;
+  --pf-v5-c-masthead__brand--BackgroundColor: #ffffff !important;
   --pf-v5-c-masthead__toggle--Color: #151515 !important;
+}
+
+/* Force ALL children of the header to be white background (unless they are buttons) */
+.pf-v5-c-masthead>*,
+.pf-v5-c-masthead__main>*,
+.pf-v5-c-masthead__content>* {
+  background-color: #ffffff !important;
 }
 
 /* Ensure all text inside header is dark */
 .pf-v5-c-masthead *,
 .pf-v5-c-page__header *,
-.pf-v5-c-masthead__tools * {
+.pf-v5-c-masthead__tools *,
+.pf-v5-c-dropdown__toggle {
   color: #151515 !important;
 }
 
-/* Ensure branding/logo area is also white */
-.pf-v5-c-masthead__brand,
-.pf-v5-c-brand {
+/* Fix dropdown text in header interactions */
+.pf-v5-c-dropdown__menu,
+.pf-v5-c-dropdown__menu * {
+  color: #151515 !important;
+  /* Ensure dropdown text is visible */
+}
+
+/* ============================================
+   HEADER DROPDOWN - Clean Style
+   ============================================ */
+
+/* Target the specific user dropdown in the header */
+.pf-v5-c-masthead .pf-v5-c-dropdown__toggle,
+.pf-v5-c-masthead .pf-v5-c-toolbar__item .pf-v5-c-dropdown .pf-v5-c-dropdown__toggle,
+#landing-mobile-dropdown-button {
   background-color: #ffffff !important;
+  background: #ffffff !important;
+  border: 1px solid #d1d5db !important;
+  /* gray-300 */
+  color: #111827 !important;
+  /* gray-900 */
+  display: inline-flex !important;
+  align-items: center !important;
+  @apply rounded-full px-4 py-2 shadow-sm transition-all duration-200 ease-in-out;
+}
+
+.pf-v5-c-masthead .pf-v5-c-dropdown__toggle:after {
+  border-color: #6b7280 !important;
+  /* gray-500 caret */
+}
+
+.pf-v5-c-masthead .pf-v5-c-dropdown__toggle:hover,
+.pf-v5-c-masthead .pf-v5-c-dropdown__toggle:focus {
+  background-color: #f3f4f6 !important;
+  /* gray-100 */
+  border-color: #9ca3af !important;
+  /* gray-400 */
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1) !important;
+}
+
+/* ============================================
+   SIDEBAR - Remove Dark Backgrounds
+   ============================================ */
+
+/* Force specific fix for expanded/active parent items in sidebar */
+.pf-v5-c-nav__item.pf-m-expanded,
+.pf-v5-c-nav__item.pf-m-expanded>.pf-v5-c-nav__link,
+.pf-v5-c-nav__link.pf-m-expanded,
+.pf-v5-c-nav__item.pf-m-current.pf-m-expanded>.pf-v5-c-nav__link {
+  background-color: transparent !important;
+  background: transparent !important;
+  color: #1d4ed8 !important;
+  /* blue-700 to show it's active */
+  font-weight: 700 !important;
+}
+
+/* Ensure the sub-menu background is also white/transparent */
+.pf-v5-c-nav__subnav {
+  background-color: transparent !important;
+}
+
+/* Fix any potential dark overlay on hover for sidebar items */
+.pf-v5-c-nav__link:hover,
+.pf-v5-c-nav__item.pf-m-expanded>.pf-v5-c-nav__link:hover {
+  background-color: #eff6ff !important;
+  /* blue-50 */
+  color: #1d4ed8 !important;
+}
+
+/* ============================================
+   BUTTONS - Usage & Alignment
+   ============================================ */
+
+/* Generic button alignment (Fixes Refresh icon issue) */
+.pf-v5-c-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  /* Space between icon and text */
+}
+
+.pf-v5-c-button__icon {
+  margin: 0 !important;
+  /* Remove default margins causing misalignment */
 }
 
 .pf-v5-c-masthead img {
@@ -67,8 +170,16 @@ header.pf-m-dark,
 
 /* Remove any dark pseudo-elements */
 .pf-v5-c-masthead::before,
-.pf-v5-c-masthead::after {
+.pf-v5-c-masthead::after,
+.pf-v5-c-masthead__main::before,
+.pf-v5-c-masthead__main::after,
+[class*="masthead"]::before,
+[class*="masthead"]::after {
   background: white !important;
+  background-color: white !important;
+  background-image: none !important;
+  content: none !important;
+  /* Try removing them entirely if they are purely decorative backgrounds */
 }
 
 /* ============================================
@@ -121,27 +232,9 @@ h6 {
 }
 
 /* Sidebar - White */
-.pf-v5-c-page__sidebar,
-.pf-v5-c-page__sidebar.pf-m-dark,
-.pf-v5-c-page__sidebar-body,
-.pf-v5-c-page__sidebar-body.pf-m-dark,
-.pf-v5-c-nav,
-.pf-v5-c-nav.pf-m-dark,
-.pf-v5-c-nav__list,
-.pf-v5-c-nav__list.pf-m-dark {
-  background-color: #ffffff !important;
-  color: #151515 !important;
-}
-
-.pf-v5-c-nav__link,
-.pf-v5-c-nav__item {
-  color: #151515 !important;
-}
-
-.pf-v5-c-nav__link:hover,
-.pf-v5-c-nav__link.pf-m-current {
-  background-color: #f0f0f0 !important;
-  color: #151515 !important;
+.pf-v5-c-page__sidebar {
+  background-color: white !important;
+  @apply shadow-sm border-r border-gray-200;
 }
 
 /* ============================================

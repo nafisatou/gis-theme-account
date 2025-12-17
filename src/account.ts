@@ -7,7 +7,65 @@ import './css/account.css';
 document.addEventListener("DOMContentLoaded", () => {
     enhanceAccountUI();
     addSmoothScrolling();
+    forceWhiteHeader(); // New aggressive fix
 });
+
+// Brute force fix for resistant black header with MutationObserver
+function forceWhiteHeader() {
+    const headerSelectors = [
+        '.pf-v5-c-masthead',
+        'header',
+        '.pf-v5-c-page__header',
+        '.pf-v5-c-masthead__main',
+        '.pf-v5-c-masthead__content',
+        '.pf-v5-c-masthead__tools'
+    ];
+
+    const applyForce = () => {
+        document.querySelectorAll(headerSelectors.join(',')).forEach(el => {
+            // Remove dark class
+            if (el.classList.contains('pf-m-dark')) {
+                el.classList.remove('pf-m-dark');
+            }
+
+            // Force inline styles
+            const element = el as HTMLElement;
+            if (element.style.backgroundColor !== 'rgb(255, 255, 255)' && element.style.backgroundColor !== '#ffffff') {
+                element.style.setProperty('background-color', '#ffffff', 'important');
+                element.style.setProperty('background', '#ffffff', 'important');
+            }
+            if (element.style.color !== 'rgb(21, 21, 21)' && element.style.color !== '#151515') {
+                element.style.setProperty('color', '#151515', 'important');
+            }
+
+            // Force children
+            el.querySelectorAll('*').forEach(child => {
+                const childEl = child as HTMLElement;
+                // Don't override buttons that need to be blue
+                if (!childEl.classList.contains('pf-v5-c-button') && !childEl.classList.contains('pf-m-primary')) {
+                    if (window.getComputedStyle(childEl).color === 'rgb(255, 255, 255)') { // If white text
+                        childEl.style.color = '#151515';
+                    }
+                }
+            });
+        });
+    };
+
+    // Initial run
+    applyForce();
+
+    // Observe for changes (React re-renders)
+    const observer = new MutationObserver(() => {
+        applyForce();
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['class', 'style']
+    });
+}
 
 function enhanceAccountUI() {
     // Apply DaisyUI classes to PatternFly components
