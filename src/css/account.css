@@ -14,6 +14,7 @@
 :root {
   --pf-v5-global--BackgroundColor--100: #ededed;
   --pf-v5-c-page--BackgroundColor: #ededed;
+  --pf-v5-c-page__sidebar--BackgroundColor: #ffffff !important;
 }
 
 body {
@@ -120,9 +121,27 @@ h6 {
 }
 
 /* Sidebar - White */
-.pf-v5-c-page__sidebar {
-  background-color: white !important;
-  @apply shadow-sm border-r border-gray-200;
+.pf-v5-c-page__sidebar,
+.pf-v5-c-page__sidebar.pf-m-dark,
+.pf-v5-c-page__sidebar-body,
+.pf-v5-c-page__sidebar-body.pf-m-dark,
+.pf-v5-c-nav,
+.pf-v5-c-nav.pf-m-dark,
+.pf-v5-c-nav__list,
+.pf-v5-c-nav__list.pf-m-dark {
+  background-color: #ffffff !important;
+  color: #151515 !important;
+}
+
+.pf-v5-c-nav__link,
+.pf-v5-c-nav__item {
+  color: #151515 !important;
+}
+
+.pf-v5-c-nav__link:hover,
+.pf-v5-c-nav__link.pf-m-current {
+  background-color: #f0f0f0 !important;
+  color: #151515 !important;
 }
 
 /* ============================================
