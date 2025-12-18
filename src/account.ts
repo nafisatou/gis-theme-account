@@ -8,7 +8,59 @@ document.addEventListener("DOMContentLoaded", () => {
     enhanceAccountUI();
     addSmoothScrolling();
     forceWhiteHeader(); // New aggressive fix
+    styleHeaderDropdown(); // Force dropdown style
 });
+
+// Force specific styles on the header dropdown (admin menu)
+function styleHeaderDropdown() {
+    const observer = new MutationObserver(() => {
+        // Ultra-broad selectors to catch ANY version (v4/v5/React) of the dropdown
+        const selectors = [
+            '.pf-v5-c-masthead .pf-v5-c-dropdown__toggle',
+            'header .pf-v5-c-dropdown__toggle',
+            '.pf-c-dropdown__toggle', // PatternFly 4
+            '.pf-c-masthead .pf-c-dropdown__toggle',
+            '[class*="masthead"] [class*="dropdown__toggle"]', // Wildcard matching
+            'header button[aria-haspopup="true"]', // ARIA matching
+            '#user-dropdown',
+            '#landing-mobile-dropdown-button',
+            '.kc-dropdown', // Keycloak specific
+            '[id*="dropdown"]' // ID wildcard
+        ];
+
+        const dropdowns = document.querySelectorAll(selectors.join(','));
+
+        dropdowns.forEach(toggle => {
+            const el = toggle as HTMLElement;
+
+            // Skip if it's the mobile hamburger menu which typically has different classes or IDs (often just an icon)
+            // Ideally we check if it has text.
+            if (!el.innerText && !el.textContent) return;
+
+            // Force the "Update" button look (Standard Button Style - Rectangle with slight round)
+            // User feedback: "not gray as the update button" -> standard gray-200. "corners not rounded" -> ensure 4px radius.
+            el.style.setProperty('background-color', '#e5e7eb', 'important'); // bg-gray-200 (Darker than #f0f0f0)
+            el.style.setProperty('background', '#e5e7eb', 'important');
+            el.style.setProperty('border', '1px solid #9ca3af', 'important'); // Visible gray border (gray-400)
+            el.style.setProperty('color', '#374151', 'important'); // gray-700
+            el.style.setProperty('border-radius', '4px', 'important'); // Rounded rectangle (4px)
+            el.style.setProperty('padding', '6px 16px', 'important'); // Standard button padding
+            el.style.setProperty('display', 'inline-flex', 'important');
+            el.style.setProperty('align-items', 'center', 'important');
+
+            // Remove "plain" or "link" modifiers that strip backgrounds
+            el.classList.remove('pf-m-plain', 'pf-m-link', 'pf-v5-m-plain');
+
+            // Force children (like text) to be dark
+            const children = el.querySelectorAll('*');
+            children.forEach(c => {
+                (c as HTMLElement).style.setProperty('color', '#111827', 'important');
+            });
+        });
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true, attributes: true });
+}
 
 // Brute force fix for resistant black header with MutationObserver
 function forceWhiteHeader() {

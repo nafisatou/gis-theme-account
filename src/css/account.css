@@ -85,36 +85,69 @@ header.pf-m-dark,
 }
 
 /* ============================================
-   HEADER DROPDOWN - Clean Style
+   HEADER DROPDOWN - Clean Style (Light Gray)
    ============================================ */
 
-/* Target the specific user dropdown in the header */
+/* Target the specific user dropdown in the header with maximum specificity and LEGACY support */
 .pf-v5-c-masthead .pf-v5-c-dropdown__toggle,
 .pf-v5-c-masthead .pf-v5-c-toolbar__item .pf-v5-c-dropdown .pf-v5-c-dropdown__toggle,
-#landing-mobile-dropdown-button {
-  background-color: #ffffff !important;
-  background: #ffffff !important;
-  border: 1px solid #d1d5db !important;
-  /* gray-300 */
-  color: #111827 !important;
-  /* gray-900 */
+#landing-mobile-dropdown-button,
+button[id*="dropdown"],
+.pf-v5-c-masthead button.pf-v5-c-dropdown__toggle,
+/* Legacy PatternFly 4 / Keycloak Default Classes */
+.pf-c-dropdown__toggle,
+.pf-c-masthead .pf-c-dropdown__toggle,
+.kc-dropdown {
+  background-color: #e5e7eb !important;
+  /* bg-gray-200 */
+  background: #e5e7eb !important;
+  border: 1px solid #9ca3af !important;
+  /* Visible border */
+  color: #374151 !important;
+  /* text-gray-700 */
   display: inline-flex !important;
   align-items: center !important;
-  @apply rounded-full px-4 py-2 shadow-sm transition-all duration-200 ease-in-out;
+  font-weight: 500 !important;
+  border-radius: 4px !important;
+  /* Standard rounded rectangle */
+  padding: 6px 16px !important;
 }
 
+/* Remove caret color override to match text */
 .pf-v5-c-masthead .pf-v5-c-dropdown__toggle:after {
-  border-color: #6b7280 !important;
-  /* gray-500 caret */
+  border-color: #111827 !important;
 }
 
 .pf-v5-c-masthead .pf-v5-c-dropdown__toggle:hover,
 .pf-v5-c-masthead .pf-v5-c-dropdown__toggle:focus {
-  background-color: #f3f4f6 !important;
-  /* gray-100 */
-  border-color: #9ca3af !important;
-  /* gray-400 */
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1) !important;
+  background-color: #e5e7eb !important;
+  /* bg-gray-200 */
+  border-color: transparent !important;
+}
+
+/* ============================================
+   SESSION BADGE - Pill Shape + Button Colors
+   ============================================ */
+
+/* Target the "Current session" label */
+.pf-v5-c-label,
+.pf-v5-c-label.pf-m-green {
+  background-color: #ffffff !important;
+  border: 1px solid #d1d5db !important;
+  color: #111827 !important;
+  border-radius: 9999px !important;
+  /* Pill shape (Rounded) */
+  padding: 4px 12px !important;
+  font-weight: 500 !important;
+}
+
+.pf-v5-c-label__content {
+  color: #111827 !important;
+}
+
+.pf-v5-c-label__icon {
+  display: none !important;
+  /* Hide green icon if present */
 }
 
 /* ============================================
